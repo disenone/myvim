@@ -4,10 +4,10 @@ if &compatible
 endif
 
 " Required:
-set runtimepath^=/home/gzluguiliang/.vim/bundle/neobundle.vim/
+set runtimepath^=/home/..../.vim/bundle/neobundle.vim/
 
 " Required:
-call neobundle#begin(expand('/home/gzluguiliang/.vim/bundle'))
+call neobundle#begin(expand('/home/..../.vim/bundle'))
 
 " Let NeoBundle manage NeoBundle
 " Required:
@@ -100,7 +100,7 @@ let g:EchoFuncKeyPrev='<C-j>'
 let g:EchoFuncKeyNext='<C-k>'
 
 " pydiction
-let g:pydiction_location = '/home/gzluguiliang/.vim/bundle/pydiction/complete-dict' 
+let g:pydiction_location = '/home/..../.vim/bundle/pydiction/complete-dict' 
 
 "" syntax
 syntax on
@@ -228,7 +228,7 @@ endif
 " update ctags
 function! UpdateCtags()
 	let fname=expand('%:p')
-	execute "!ctags -a " . fname . " --fields=+lS -f ~/entities/tags"
+	execute "!ctags -a " . fname . " --fields=+lS -f ."
 endfunction
 
 " change tab file
@@ -255,7 +255,7 @@ nmap <F6> :call UpdateCtags()<CR>
 " map <F7> :PymodeLint<CR>
 
 " command t
-nmap <F8> :CommandT ~/entities/<CR>
+nmap <F8> :CommandT .<CR>
 
 " :UpdateTypesFile
 " nmap <F9> :UpdateTypesFileOnly<CR>
