@@ -208,6 +208,8 @@ let g:pymode_lint_ignore = 'E111,W0311,W191,E501,E265'
 let g:jedi#popup_select_first = 1
 let g:jedi#popup_on_dot = 0
 
+let g:CommandTFileScanner = "watchman"
+let g:CommandTSuppressMaxFilesWarning=1
 let g:CommandTCursorLeftMap = ['<BS>' , '<Left>']
 let g:CommandTBackspaceMap = '<C-h>'
 let g:CommandTWildIgnore = &wildignore . ",*.pyc"
