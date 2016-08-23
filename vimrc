@@ -91,6 +91,10 @@ imap <Esc>OR *
 imap <Esc>Ol +
 imap <Esc>OS -
 
+" tab indent
+vnoremap <tab> >gv
+vnoremap <s-tab> <gv
+
 "execute pathogen#infect()
 "execute pathogen#helptags()
 "execute pathogen#infect("after/{}")
