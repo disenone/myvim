@@ -4,10 +4,10 @@ if &compatible
 endif
 
 " Required:
-set runtimepath^=/home/..../.vim/bundle/neobundle.vim/
+set runtimepath^=~/.vim/bundle/neobundle.vim/
 
 " Required:
-call neobundle#begin(expand('/home/..../.vim/bundle'))
+call neobundle#begin(expand('~/.vim/bundle'))
 
 " Let NeoBundle manage NeoBundle
 " Required:
@@ -104,7 +104,7 @@ let g:EchoFuncKeyPrev='<C-j>'
 let g:EchoFuncKeyNext='<C-k>'
 
 " pydiction
-let g:pydiction_location = '/home/..../.vim/bundle/pydiction/complete-dict' 
+let g:pydiction_location = '~/.vim/bundle/pydiction/complete-dict' 
 
 "" syntax
 syntax on
