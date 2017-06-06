@@ -64,7 +64,8 @@ set softtabstop=4
 set tabstop=4
 "set autoindent
 set si
-set noexpandtab
+"set noexpandtab
+set expandtab
 set wrap
 set nu
 set cursorline
@@ -220,13 +221,16 @@ let g:CommandTWildIgnore = &wildignore . ",*.pyc"
 
 " encoding settings {{{
 if has("multi_byte")
-	if &termencoding == ""
-		let &termencoding = &encoding
-	endif
-	set encoding=gbk
-	setglobal fileencoding=gb18030
+	"if &termencoding == ""
+		"let &termencoding = &encoding
+	"endif
+	"set encoding=gbk
+	"setglobal fileencoding=gb18030
+	set termencoding=utf-8
+	set encoding=utf-8
+	setglobal fileencoding=utf-8
 	"setglobal bomb
-	set fileencodings=ucs-bom,utf-8,latin1,gb18030,gbk
+	set fileencodings=ucs-bom,utf-8,gb18030,gbk,latin1,
 endif
 " }}}
 
