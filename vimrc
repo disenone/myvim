@@ -64,8 +64,8 @@ set softtabstop=4
 set tabstop=4
 "set autoindent
 set si
-"set noexpandtab
 set expandtab
+autocmd FileType python set noexpandtab
 set wrap
 set nu
 set cursorline
