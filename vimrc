@@ -66,6 +66,7 @@ set tabstop=4
 set si
 set expandtab
 autocmd FileType python set noexpandtab
+autocmd FileType python set tabstop=4
 set wrap
 set nu
 set cursorline
@@ -242,8 +243,8 @@ function! UpdateCtags()
 endfunction
 
 " change tab file
-nmap <C-j> :tabn<CR>
-nmap <C-h> :tabp<CR>
+nmap <C-j> :tabp<CR>
+nmap <C-k> :tabn<CR>
 
 "" 按下 F2 调出/隐藏 NERDTree
 nnoremap <silent> <F2> :NERDTree<CR>
