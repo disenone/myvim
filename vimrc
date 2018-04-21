@@ -219,6 +219,7 @@ let g:CommandTSuppressMaxFilesWarning=1
 let g:CommandTCursorLeftMap = ['<BS>' , '<Left>']
 let g:CommandTBackspaceMap = '<C-h>'
 let g:CommandTWildIgnore = &wildignore . ",*.pyc"
+let g:CommandTMaxHeight = 30
 
 " encoding settings {{{
 if has("multi_byte")
