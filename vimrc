@@ -251,7 +251,8 @@ nmap <C-k> :tabn<CR>
 nnoremap <silent> <F2> :NERDTree<CR>
 
 " 开关taglist
-map <F3> :TlistToggle<CR>
+" map <F3> :TlistToggle<CR>
+
 map <F10> :TlistToggle<CR>
 
 " 显示行号
@@ -267,7 +268,9 @@ nmap <F6> :call UpdateCtags()<CR>
 " map <F7> :PymodeLint<CR>
 
 " command t
-nmap <F8> :CommandT .<CR>
+map <F3> :CommandTBuffer<CR>
+map <F8> :CommandT .<CR>
+map <F9> :CommandTFlush<CR>
 
 " :UpdateTypesFile
 " nmap <F9> :UpdateTypesFileOnly<CR>
