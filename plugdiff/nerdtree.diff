@@ -1,0 +1,12 @@
+Index: ~/.vim/plugged/nerdtree/plugin/NERD_tree.vim
+--- ~/.vim/plugged/nerdtree/plugin/NERD_tree.vim
++++ ~/.vim/plugged/nerdtree/plugin/NERD_tree.vim
+@@ -69,7 +69,7 @@ call s:initVariable("g:NERDTreeShowHidden", 0)
+ call s:initVariable("g:NERDTreeShowLineNumbers", 0)
+ call s:initVariable("g:NERDTreeSortDirs", 1)
+ 
+-if !nerdtree#runningWindows() && !nerdtree#runningCygwin()
++if !nerdtree#runningWindows() && !nerdtree#runningCygwin() && 0
+     call s:initVariable("g:NERDTreeDirArrowExpandable", "[7m<96>)
+     call s:initVariable("g:NERDTreeDirArrowCollapsible", "[7m<96>)
+ else

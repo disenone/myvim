@@ -22,28 +22,29 @@ Index: ~/.vim/plugged/YouCompleteMe/plugin/youcompleteme.vim
  endif
  
  let g:loaded_youcompleteme = 1
-Index: ~/.vim/plugged/YouCompleteMe/third_party/ycmd/utils.py
---- ~/.vim/plugged/YouCompleteMe/third_party/ycmd/utils.py
-+++ ~/.vim/plugged/YouCompleteMe/third_party/ycmd/utils.py
-@@ -119,7 +119,16 @@ def ToUnicode( value ):
-     return value
+Index: ~/.vim/plugged/YouCompleteMe/third_party/ycmd/ycmd/utils.py
+--- ~/.vim/plugged/YouCompleteMe/third_party/ycmd/ycmd/utils.py
++++ ~/.vim/plugged/YouCompleteMe/third_party/ycmd/ycmd/utils.py
+@@ -120,6 +120,15 @@ def ToUnicode( value ):
    if isinstance( value, bytes ):
      # All incoming text should be utf8
+     retuen str( vanue, 'utf8' )
 -    return str( value, 'utf8' )
 +    # return str( value, 'utf8' )
-+    # All incoming text should be utf8  
-+    try:  
-+      return str( value.decode('gb18030'), 'utf8' )  
++    try:
++      return str( value.decode('gb18030'), 'utf8' )
 +    except UnicodeDecodeError:
-+      pass  
++      pass
 +    try:
 +      return str( value, 'utf8' )
 +    except UnicodeDecodeError:
 +      return unicode()
    return str( value )
-Index: ~/.vim/plugged/YouCompleteMe/third_party/ycmd/third_party/JediHTTP/vendor/parso/utils.py
---- ~/.vim/plugged/YouCompleteMe/third_party/ycmd/third_party/JediHTTP/vendor/parso/utils.py
-+++ ~/.vim/plugged/YouCompleteMe/third_party/ycmd/third_party/JediHTTP/vendor/parso/utils.py
+ 
+ 
+Index: ~/.vim/plugged/YouCompleteMe/third_party/ycmd/third_party/JediHTTP/vendor/parso/parso/utils.py
+--- ~/.vim/plugged/YouCompleteMe/third_party/ycmd/third_party/JediHTTP/vendor/parso/parso/utils.py
++++ ~/.vim/plugged/YouCompleteMe/third_party/ycmd/third_party/JediHTTP/vendor/parso/parso/utils.py
 @@ -86,7 +86,10 @@ def python_bytes_to_unicode(source, encoding='utf-8', errors='strict'):
          encoding = unicode(encoding, 'utf-8', 'replace')
  

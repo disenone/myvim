@@ -326,7 +326,7 @@ set tags=./.tags;,.tags
     "map <F10> :TlistToggle<CR>
 
     " ÏÔÊ¾ĞĞºÅ
-    nnoremap <F4> :set nonumber!<CR>:set foldcolumn=0<CR>
+    nnoremap <F4> :set nonumber!<CR>:set foldcolumn=0<CR>:set signcolumn=no<CR> 
 
     " ÏÔÊ¾¿Õ°××Ö·û
     noremap <F5> :set list!<CR>
