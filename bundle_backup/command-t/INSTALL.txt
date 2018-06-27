@@ -1,2 +1,0 @@
-gzluguiliang@onlinegame11-249:~/.vim/bundle/command-t/ruby/command-t$ ruby extconf.rb
-make
