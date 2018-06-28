@@ -3,21 +3,12 @@
 " - Avoid using standard Vim directory names like 'plugin'
 call plug#begin('~/.vim/plugged')
 
-"Plug 'vim-scripts/L9'
-"Plug 'wincent/command-t'
-"Plug 'rkulla/pydiction'
-"Plug 'klen/python-mode'
-"Plug 'vim-scripts/taglist.vim'
-"Plug 'nvie/vim-flake8'
-"Plug 'powerline/powerline'
-"Plug 'vim-scripts/TagHighlight'
-"Plug 'nathanaelkane/vim-indent-guides'
-"Plug 'kelan/gyp.vim'
-"Plug 'Chiel92/vim-autoformat'
-"Plug 'scrooloose/syntastic'
-"Plug 'vim-scripts/TagHighlight'
 "Plug 'Shougo/deoplete.nvim'
-" Plug 'Shougo/echodoc.vim'
+"Plug 'Shougo/echodoc.vim'
+"Plug 'scrooloose/nerdcommenter'
+"Plug 'svermeulen/vim-easyclip'
+"Plug 'Valloric/YouCompleteMe'
+"Plug 'terryma/vim-multiple-cursors'
 
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'ludovicchabant/vim-gutentags'
@@ -26,11 +17,29 @@ Plug 'skywind3000/asyncrun.vim'
 Plug 'w0rp/ale'
 Plug 'mhinz/vim-signify'
 Plug 'tpope/vim-unimpaired'
-Plug 'Valloric/YouCompleteMe'
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
-Plug 'scrooloose/nerdcommenter'
 Plug 'sheerun/vim-polyglot'
 Plug 'guns/xterm-color-table.vim'
+Plug 'junegunn/fzf'
+Plug 'mileszs/ack.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'justinmk/vim-sneak'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
+Plug 'terryma/vim-expand-region'
+Plug 'kana/vim-textobj-user'
+Plug 'kana/vim-textobj-indent'
+Plug 'kana/vim-textobj-syntax'
+Plug 'kana/vim-textobj-function', { 'for':['c', 'cpp', 'vim', 'java'] }
+Plug 'sgur/vim-textobj-parameter'
+Plug 'bps/vim-textobj-python'
+Plug 'junegunn/vim-easy-align'
+Plug 'junegunn/limelight.vim'
+Plug 'junegunn/Goyo.vim'
+Plug 'luochen1990/rainbow'
+Plug 'yssl/QFEnter'
+Plug 'easymotion/vim-easymotion'
 
 " Initialize plugin system
 call plug#end()
@@ -115,13 +124,21 @@ set tags=./.tags;,.tags
 
 " encoding settings {{{
     if has("multi_byte")
-            if &termencoding == ""
-                    let &termencoding = &encoding
-            endif
+        if &termencoding == ""
+            let &termencoding = &encoding
+        endif
+        setglobal nobomb
+        set fileencodings=ucs-bom,utf-8,latin1,gb18030,gbk
+
+        if $LANG == "zh_CN.GBK"
+            set termencoding=gb18030
             set encoding=gbk
             setglobal fileencoding=gb18030
-            "setglobal bomb
-            set fileencodings=ucs-bom,utf-8,latin1,gb18030,gbk
+        elseif $LANG == "zh_CN.UTF-8"
+            set termencoding=utf-8
+            set encoding=utf-8
+            setglobal fileencoding=utf-8
+        endif
     endif
 " }}}
 
@@ -141,9 +158,8 @@ set tags=./.tags;,.tags
 
 "" powerline
     " set nocompatible   " Disable vi-compatibility
-    set rtp+=/usr/local/lib/python2.7/dist-packages/powerline/bindings/vim/
+    " set rtp+=/usr/local/lib/python2.7/dist-packages/powerline/bindings/vim/
     set laststatus=2	" Always show the statusline
-    "set encoding=utf-8 " Necessary to show Unicode glyphs
 
 " flake8
     autocmd FileType python map <buffer> <C-F7> :call Flake8()<CR>
@@ -301,6 +317,7 @@ set tags=./.tags;,.tags
     let g:Lf_DefaultMode = 'FullPath'
     let g:Lf_CursorBlink = 1
     let g:Lf_HideHelp = 1
+    let g:Lf_DefaultExternalTool = 'rg'
     let g:Lf_StlColorscheme = 'powerline'
     let g:Lf_PreviewResult = {'Function':0, 'BufTag':0}
     let g:Lf_WildIgnore = {
@@ -308,28 +325,70 @@ set tags=./.tags;,.tags
             \ 'file': ['*.sw?','~$*','*.bak','*.exe','*.o','*.so','*.py[co]']
             \}
 
+" fzf
+    let g:fzf_layout = { 'down': '~70%' }
+
+" ack
+    if executable('ag')
+        let g:ackprg = 'ag --vimgrep'
+    endif
+    let g:ack_lhandler = "botright lopen 10"
+    let g:ack_qhandler = "botright copen 10"
+
+" signify
+    let g:signify_realtime = 0
+
+" airline
+    let g:airline#extensions#whitespace#checks = []
+
+" incsearch
+    "map /  <Plug>(incsearch-forward)
+    "map ?  <Plug>(incsearch-backward)
+    "map g/ <Plug>(incsearch-stay)
+
+" vi-mexpand-region
+    vmap v <Plug>(expand_region_expand)
+    vmap V <Plug>(expand_region_shrink)
+
+" vim-textobj
+    call expand_region#custom_text_objects('python', {
+	  \ 'af' :1,
+	  \ 'if' :1,
+	  \ })
+
+" vim-easy-align
+    xmap ga <Plug>(EasyAlign)
+    nmap ga <Plug>(EasyAlign)
+
+" limelight
+    let g:limelight_conceal_ctermfg = 'gray'
+
+" rainbow
+    let g:rainbow_active = 0
+
 " ¿ì½Ý¼ü
     " tab indent
     vnoremap <tab> >gv
     vnoremap <s-tab> <gv
 
     " change tab file
-    nmap <C-k> :tabn<CR>
-    nmap <C-j> :tabp<CR>
-    nmap <m-]> :tselect<CR>
+    map <C-k> :tabn<CR>
+    map <C-j> :tabp<CR>
 
     "" °´ÏÂ F2 µ÷³ö/Òþ²Ø NERDTree
-    nnoremap <silent> <F2> :NERDTreeToggle<CR>
+    map <silent> <F2> :NERDTreeToggle<CR>
 
     " ¿ª¹Øtaglist
     "map <F3> :TlistToggle<CR>
     "map <F10> :TlistToggle<CR>
 
     " ÏÔÊ¾ÐÐºÅ
-    nnoremap <F4> :set nonumber!<CR>:set foldcolumn=0<CR>:set signcolumn=no<CR> 
+    map <F4> :set nonumber!<CR>:set foldcolumn=0<CR>:set signcolumn=no<CR> 
 
     " ÏÔÊ¾¿Õ°××Ö·û
-    noremap <F5> :set list!<CR>
+    map <F5> :set list!<CR>
+
+    map <F8> :FZF<CR>
 
     " ¸üÐÂctags
     "nmap <F6> :call UpdateCtags()<CR>
@@ -353,6 +412,7 @@ set tags=./.tags;,.tags
     " alt
     "map m :echo "ALT-M pressed"<CR>
     "map ] :tselect<CR>
+    map r :RainbowToggle<CR>
 
 " color
     hi LineNr          ctermfg=250 ctermbg=236
@@ -361,9 +421,10 @@ set tags=./.tags;,.tags
     hi Search	term=reverse ctermfg=0 ctermbg=3 guibg=Yellow
     hi SpellBad term=reverse ctermfg=0 ctermbg=3 guibg=Yellow
     hi Boolean ctermfg=darkcyan
+    hi TabLineFill ctermfg=black
+    hi TabLineSel ctermfg=white ctermbg=darkgray
+    hi TabLine ctermfg=grey ctermbg=black
     "hi Number          ctermfg=2
     "hi Function        ctermfg=154
     "hi String          ctermfg=3
-
-
 
