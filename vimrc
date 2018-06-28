@@ -40,6 +40,7 @@ Plug 'junegunn/Goyo.vim'
 Plug 'luochen1990/rainbow'
 Plug 'yssl/QFEnter'
 Plug 'easymotion/vim-easymotion'
+Plug 'justinmk/vim-dirvish'
 
 " Initialize plugin system
 call plug#end()
@@ -51,14 +52,23 @@ set tags=./.tags;,.tags
     "
     "检测文件的类型
     "filetype plugin indent on
-    filetype plugin on
+    "set cmdheight=2
+    "set autoindent
+    "set mouse=a
+    "set textwidth=80
+    "set list lcs=tab:\|\ 
+    " :runtime syntax/colortest.vim
+    "set background=dark
+    "colorscheme bandit
+    "colorscheme molokai
+    "let g:molokai_original=1
+    "let g:rehash256 = 1
+    "set autoread
 
-    "去掉讨厌的有关vi一致性模式，避免以前版本的一些bug和局限
-    set nocompatible
-    "显示行号
-    set number
-    "记录历史的行数
-    set history=1000 
+    filetype plugin on
+    syntax on
+    set nocompatible    " 去掉讨厌的有关vi一致性模式，避免以前版本的一些bug和局限
+    set number          " 显示行号
     set incsearch
     set backspace=indent,eol,start
     set shiftwidth=4
@@ -75,14 +85,11 @@ set tags=./.tags;,.tags
     set noshowmode
     set signcolumn=yes
     highlight SignColumn ctermbg=darkgrey
-    "set cmdheight=2
-    "set autoindent
-    "set mouse=a
-    "set textwidth=80
-    "set list lcs=tab:\|\ 
-    "" 数字键
-    "To have the numeric keypad working with putty / vim
-    imap <Esc>Oq 1
+    set laststatus=2	" Always show the statusline
+    set t_Co=256		" show powerline color
+
+    " 数字键
+    imap <Esc>Oq 1 
     imap <Esc>Or 2
     imap <Esc>Os 3
     imap <Esc>Ot 4
@@ -98,15 +105,6 @@ set tags=./.tags;,.tags
     imap <Esc>Ol +
     imap <Esc>OS -
 
-    "" syntax
-    syntax on
-    " :runtime syntax/colortest.vim
-    "set background=dark
-    "colorscheme bandit
-    "let g:molokai_original=1
-    "let g:rehash256 = 1
-    set t_Co=256		" show powerline color
-    "colorscheme molokai
     ""让Vim的补全菜单行为与一般IDE一致(参考VimTip1228)
     set completeopt+=longest
     " 
@@ -121,6 +119,29 @@ set tags=./.tags;,.tags
     inoremap <expr> <Up>       pumvisible() ? "\<C-p>" : "\<Up>"
     inoremap <expr> <PageDown> pumvisible() ? "\<PageDown>\<C-p>\<C-n>" : "\<PageDown>"
     inoremap <expr> <PageUp>   pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<PageUp>"
+
+    if !has('nvim') && &ttimeoutlen == -1
+        set ttimeout
+        set ttimeoutlen=100
+    endif
+
+    if !&scrolloff
+        set scrolloff=1
+    endif
+    if !&sidescrolloff
+        set sidescrolloff=5
+    endif
+    set display+=lastline
+
+    if &listchars ==# 'eol:$'
+        set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
+    endif
+    if &history < 1000
+        set history=1000
+    endif
+    if &tabpagemax < 50
+        set tabpagemax=50
+    endif
 
 " encoding settings {{{
     if has("multi_byte")
@@ -159,7 +180,6 @@ set tags=./.tags;,.tags
 "" powerline
     " set nocompatible   " Disable vi-compatibility
     " set rtp+=/usr/local/lib/python2.7/dist-packages/powerline/bindings/vim/
-    set laststatus=2	" Always show the statusline
 
 " flake8
     autocmd FileType python map <buffer> <C-F7> :call Flake8()<CR>
@@ -365,6 +385,11 @@ set tags=./.tags;,.tags
 
 " rainbow
     let g:rainbow_active = 0
+
+" dirvish
+    autocmd FileType dirvish
+        \  nnoremap <silent><buffer> t :call dirvish#open('tabedit', 0)<CR>
+        \ |xnoremap <silent><buffer> t :call dirvish#open('tabedit', 0)<CR>
 
 " 快捷键
     " tab indent
