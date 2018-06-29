@@ -41,6 +41,10 @@ Plug 'luochen1990/rainbow'
 Plug 'yssl/QFEnter'
 Plug 'easymotion/vim-easymotion'
 Plug 'justinmk/vim-dirvish'
+Plug 'godlygeek/tabular'
+Plug 'drewtempelmeyer/palenight.vim'
+Plug 'liuchengxu/space-vim-dark'
+Plug 'flazz/vim-colorschemes'
 
 " Initialize plugin system
 call plug#end()
@@ -57,9 +61,7 @@ set tags=./.tags;,.tags
     "set mouse=a
     "set textwidth=80
     "set list lcs=tab:\|\ 
-    " :runtime syntax/colortest.vim
     "set background=dark
-    "colorscheme bandit
     "colorscheme molokai
     "let g:molokai_original=1
     "let g:rehash256 = 1
@@ -349,8 +351,10 @@ set tags=./.tags;,.tags
     let g:fzf_layout = { 'down': '~70%' }
 
 " ack
-    if executable('ag')
-        let g:ackprg = 'ag --vimgrep'
+    if executable('rg')
+        let g:ackprg = 'rg --vimgrep -i'
+    elseif executable('ag')
+        let g:ackprg = 'ag --vimgrep -a'
     endif
     let g:ack_lhandler = "botright lopen 10"
     let g:ack_qhandler = "botright copen 10"
@@ -442,16 +446,23 @@ set tags=./.tags;,.tags
     map / :profile pause<CR>
 
 " color
-    hi LineNr          ctermfg=250 ctermbg=236
-    hi Statement       ctermfg=3
-    hi Visual	ctermfg=7 ctermbg=242 guifg=LightGrey guibg=DarkGrey
-    hi Search	term=reverse ctermfg=0 ctermbg=3 guibg=Yellow
-    hi SpellBad term=reverse ctermfg=0 ctermbg=3 guibg=Yellow
-    hi Boolean ctermfg=darkcyan
-    hi TabLineFill ctermfg=black
-    hi TabLineSel ctermfg=white ctermbg=darkgray
-    hi TabLine ctermfg=grey ctermbg=black
-    "hi Number          ctermfg=2
-    "hi Function        ctermfg=154
-    "hi String          ctermfg=3
+    ":runtime syntax/colortest.vim
+    let cscheme = ''
+    if cscheme != ''
+        exec 'colorscheme '.cscheme
+    else
+        hi LineNr       ctermfg =250 ctermbg=236
+        hi Statement    ctermfg =3
+        hi Visual       ctermfg =7 ctermbg=242 guifg=LightGrey guibg=DarkGrey
+        hi Search       ctermfg =0 term=reverse ctermbg=3 guibg=Yellow
+        hi SpellBad     ctermfg =0 term=reverse ctermbg=3 guibg=Yellow
+        hi Boolean      ctermfg =darkcyan
+        hi TabLineFill  ctermfg =black
+        hi TabLineSel   ctermfg =white ctermbg=darkgray
+        hi TabLine      ctermfg =grey ctermbg=black
+        "hi Number      ctermfg =2
+        "hi Function    ctermfg =154
+        "hi String      ctermfg =3
+    endif
+    "hi Normal       ctermfg=white ctermbg=black
 
