@@ -438,6 +438,8 @@ set tags=./.tags;,.tags
     "map m :echo "ALT-M pressed"<CR>
     "map ] :tselect<CR>
     map r :RainbowToggle<CR>
+    map . :profile start profile.log<CR>:profile func *<CR>:profile file *<CR>
+    map / :profile pause<CR>
 
 " color
     hi LineNr          ctermfg=250 ctermbg=236
