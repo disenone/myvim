@@ -86,7 +86,7 @@ set tags=./.tags;,.tags
     set hlsearch
     set noshowmode
     set signcolumn=yes
-    highlight SignColumn ctermbg=darkgrey
+    highlight SignColumn ctermbg=black
     set laststatus=2	" Always show the statusline
     set t_Co=256		" show powerline color
 
@@ -358,6 +358,7 @@ set tags=./.tags;,.tags
     endif
     let g:ack_lhandler = "botright lopen 10"
     let g:ack_qhandler = "botright copen 10"
+    command! -nargs=* -complete=file L          call ack#Ack('lgrep!', <q-args>)
 
 " signify
     let g:signify_realtime = 0
@@ -444,6 +445,7 @@ set tags=./.tags;,.tags
     map r :RainbowToggle<CR>
     map . :profile start profile.log<CR>:profile func *<CR>:profile file *<CR>
     map / :profile pause<CR>
+    map l :lclose<CR>
 
 " color
     ":runtime syntax/colortest.vim
