@@ -31,7 +31,7 @@ ANTIGEN_MUTEX=false
 source "$ANTIGEN"
 
 # Initialize oh-my-zsh
-#antigen use oh-my-zsh
+antigen use oh-my-zsh
 
 # default bundles
 # visit https://github.com/unixorn/awesome-zsh-plugins
