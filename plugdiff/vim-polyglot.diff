@@ -34,3 +34,10 @@ Index: ~/.vim/plugged/vim-polyglot/syntax/python.vim
    HiLink pythonException        Exception
 @@ -471,7 +475,7 @@ if v:version >= 508 || !exists('did_python_syn_inits')
    HiLink pythonBinError         Error
+ 
+   HiLink pythonBoolean          Boolean
+-  HiLink pythonNone             Constant
++  HiLink pythonNone             Boolean
+ 
+   HiLink pythonBuiltinObj       Structure
+   HiLink pythonBuiltinFunc      Function
