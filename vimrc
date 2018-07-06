@@ -151,7 +151,7 @@ set tags=./.tags;,.tags
             let &termencoding = &encoding
         endif
         setglobal nobomb
-        set fileencodings=ucs-bom,utf-8,latin1,gb18030,gbk
+        set fileencodings=ucs-bom,utf-8,gb18030,gbk,latin1
 
         if $LANG == "zh_CN.GBK"
             set termencoding=gb18030
@@ -331,7 +331,8 @@ set tags=./.tags;,.tags
     noremap m :LeaderfTag<cr>
     let g:Lf_StlSeparator = { 'left': '', 'right': '', 'font': '' }
      
-    let g:Lf_RootMarkers = ['.project', '.root', '.git']
+    let g:Lf_FollowLinks = 1
+    let g:Lf_RootMarkers = ['.project', '.leaderf', '.git']
     let g:Lf_WorkingDirectoryMode = 'Ac'
     let g:Lf_WindowHeight = 0.70
     let g:Lf_CacheDirectory = expand('~/.vim/cache')
@@ -352,7 +353,7 @@ set tags=./.tags;,.tags
 
 " ack
     if executable('rg')
-        let g:ackprg = 'rg --vimgrep -i'
+        let g:ackprg = 'rg --vimgrep'
     elseif executable('ag')
         let g:ackprg = 'ag --vimgrep -a'
     endif
