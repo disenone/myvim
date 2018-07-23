@@ -353,9 +353,9 @@ set tags=./.tags;,.tags
 
 " ack
     if executable('rg')
-        let g:ackprg = 'rg --vimgrep'
+        let g:ackprg = 'rg --vimgrep -L'
     elseif executable('ag')
-        let g:ackprg = 'ag --vimgrep -a'
+        let g:ackprg = 'ag --vimgrep -a -f'
     endif
     let g:ack_lhandler = "botright lopen 10"
     let g:ack_qhandler = "botright copen 10"
