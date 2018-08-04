@@ -75,6 +75,7 @@ set tags=./.tags;,.tags
     set backspace=indent,eol,start
     set shiftwidth=4
     set softtabstop=4
+    set tabstop=4
     set si
     set expandtab
     autocmd FileType python set noexpandtab
