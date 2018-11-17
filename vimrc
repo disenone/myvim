@@ -10,15 +10,17 @@ call plug#begin('~/.vim/plugged')
 "Plug 'Valloric/YouCompleteMe'
 "Plug 'terryma/vim-multiple-cursors'
 
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+"Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'kelan/gyp.vim', { 'for':['gyp'] }
 Plug 'skywind3000/asyncrun.vim'
 Plug 'w0rp/ale'
-Plug 'mhinz/vim-signify'
+"Plug 'mhinz/vim-signify'
 Plug 'tpope/vim-unimpaired'
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
-Plug 'sheerun/vim-polyglot'
+"Plug 'sheerun/vim-polyglot'
+"Plug 'mitsuhiko/vim-python-combined'
+Plug '~/.vim/my-plugins/my-python'
 Plug 'guns/xterm-color-table.vim'
 Plug 'junegunn/fzf'
 Plug 'mileszs/ack.vim'
@@ -80,6 +82,10 @@ set tags=./.tags;,.tags
     set expandtab
     autocmd FileType python set noexpandtab
     autocmd FileType python set tabstop=4
+    autocmd FileType cpp set noexpandtab
+    autocmd FileType cpp set tabstop=4
+    autocmd FileType go set noexpandtab
+    autocmd FileType go set tabstop=4
     set wrap
     set nu
     set cursorline
@@ -448,6 +454,8 @@ set tags=./.tags;,.tags
     map . :profile start profile.log<CR>:profile func *<CR>:profile file *<CR>
     map / :profile pause<CR>
     map l :lclose<CR>
+
+    " ctags ¿ì½Ý¼ü g+]
 
 " color
     ":runtime syntax/colortest.vim
