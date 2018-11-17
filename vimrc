@@ -322,6 +322,7 @@ set tags=./.tags;,.tags
 
 " vim-polyglot
     let g:python_highlight_space_errors = 0
+    let g:python_highlight_builtin_objs = 1
 
 " update ctags
     function! UpdateCtags()
@@ -354,6 +355,8 @@ set tags=./.tags;,.tags
             \ 'dir': ['.svn','.git','.hg'],
             \ 'file': ['*.sw?','~$*','*.bak','*.exe','*.o','*.so','*.py[co]']
             \}
+    " Change the highlight of matched string
+    highlight Lf_hl_match gui=bold guifg=Blue cterm=bold ctermfg=4
 
 " fzf
     let g:fzf_layout = { 'down': '~70%' }
